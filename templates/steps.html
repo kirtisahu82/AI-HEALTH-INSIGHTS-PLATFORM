@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-3">🚶 Steps Tracker</h2>
+
+    <div class="card p-4 shadow mx-auto" style="max-width:450px;">
+        <form method="POST">
+            <label>Enter Steps</label>
+            <input type="number" name="steps" class="form-control mb-3" required>
+            <button class="btn btn-success w-100">Add Steps</button>
+        </form>
+
+        <hr>
+
+        <h5>Total Today: <b>{{ total }} steps</b></h5>
+
+        {% for l in logs %}
+        <div class="border rounded p-2 mb-2">
+            {{ l.steps }} steps
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr class="my-4">
+
+    <h3 class="text-center">📊 Steps (Last 7 Days)</h3>
+
+    <canvas id="stepsChart" height="130"></canvas>
+
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('stepsChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                {% for row in chart_data %}
+                "{{ row.date }}",
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'Steps',
+                data: [
+                    {% for row in chart_data %}
+                    {{ row.steps }},
+                    {% endfor %}
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

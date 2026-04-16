@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">🏠 Home Summary</h2>
+
+    <div class="row g-4">
+
+        <!-- Calories Card -->
+        <div class="col-md-4">
+            <div class="card p-3 text-center shadow-sm">
+                <img src="{{ url_for('static', filename='images/health.png') }}" width="50">
+                <h5 class="mt-2">Today's Calories</h5>
+                <p class="fw-bold">{{ total_calories }} kcal</p>
+                <a href="{{ url_for('meal') }}" class="btn btn-success w-100">Add Meal</a>
+            </div>
+        </div>
+
+        <!-- Water Card -->
+        <div class="col-md-4">
+            <div class="card p-3 text-center shadow-sm">
+                <img src="{{ url_for('static', filename='images/doctor.png') }}" width="50">
+                <h5 class="mt-2">Water Intake</h5>
+                <p class="fw-bold">{{ water_intake }} ml</p>
+                <a href="{{ url_for('water') }}" class="btn btn-info w-100">Track Water</a>
+            </div>
+        </div>
+
+        <!-- BMI Card -->
+        <div class="col-md-4">
+            <div class="card p-3 text-center shadow-sm">
+                <img src="{{ url_for('static', filename='images/fitness.png') }}" width="50">
+                <h5 class="mt-2">BMI Tools</h5>
+                <p>Check BMI & Status</p>
+                <a href="{{ url_for('bmi') }}" class="btn btn-warning w-100">Check BMI</a>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-4">
+
+    <h4 class="mb-3">🍽 Today's Meals</h4>
+
+    {% if meals %}
+        {% for m in meals %}
+        <div class="border rounded p-2 mb-2">
+            <b>{{ m.meal_type }}</b> ({{ m.calories }} kcal)<br>
+            <small>{{ m.description }}</small>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-muted">No meals added today.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

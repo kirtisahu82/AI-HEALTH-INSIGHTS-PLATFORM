@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .sidebar {
+        background-color: #2d6a4f;
+        color: white;
+        min-height: 100vh;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 5px;
+    }
+    .sidebar a:hover {
+        background-color: #40916c;
+    }
+    .dashboard-title {
+        color: #2d6a4f;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .card {
+        border-radius: 15px;
+    }
+    .card img {
+        width: 50px;
+    }
+</style>
+
+<div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar">
+        <h3 class="text-white text-center py-3">📊 Dashboard </h3>
+
+        <a href="{{ url_for('home') }}">🏠 Home</a>
+        <a href="{{ url_for('meal') }}">🍽 Add Meal</a>
+        <a href="{{ url_for('water') }}" class="nav-link text-white">💧 Water Tracker</a>
+        <a href="{{ url_for('calories') }}">🔥 Calories</a>
+        <a href="{{ url_for('steps') }}">🚶 Steps Tracker</a>
+        <a href="{{ url_for('bmi') }}">⚕ BMI Calculator</a>
+        <a href="{{ url_for('history') }}">📜 History</a>
+        <a href="{{ url_for('logout') }}" class ="btn btn-danger w-100 mt-3">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9 p-4">
+        <h2 class="dashboard-title">Welcome, {{ username }} 👋</h2>
+
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm text-center">
+                    <img src="{{ url_for('static', filename='images/health.png') }}" alt="">
+                    <h5 class="mt-2">Daily Meal</h5>
+                    <p>Add breakfast, lunch, dinner & snacks.</p>
+                    <a href="{{ url_for('meal') }}" class="btn btn-success w-100">Add</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm text-center">
+                    <img src="{{ url_for('static', filename='images/doctor.png') }}" alt="">
+                    <h5 class="mt-2">Water Intake</h5>
+                    <p>Track your daily water goal.</p>
+                    <a href="{{ url_for('water') }}" class="btn btn-info w-100">Track</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm text-center">
+                    <img src="{{ url_for('static', filename='images/fitness.png') }}" alt="">
+                    <h5 class="mt-2">BMI Check</h5>
+                    <p>Calculate BMI & health status.</p>
+                    <a href="{{ url_for('bmi') }}" class="btn btn-warning w-100">
+                        Check BMI
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4 - Chatbot -->
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm text-center">
+                    <img src="{{ url_for('static', filename='images/chatbot.png') }}" width="50">
+                    <h5 class="mt-2">AI Health Chatbot</h5>
+                    <p>Ask anything related to diet, fitness, sleep, calories.</p>
+                    <a href="{{ url_for('chatbot') }}" class="btn btn-info w-100">Chat Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

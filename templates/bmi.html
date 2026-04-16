@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">BMI Calculator</h2>
+
+    <form method="POST" class="card p-4 shadow mx-auto" style="max-width:400px;">
+        <label>Weight (kg)</label>
+        <input type="number" name="weight" class="form-control mb-3" required>
+
+        <label>Height (cm)</label>
+        <input type="number" name="height" class="form-control mb-3" required>
+
+        <button type="submit" class="btn btn-primary w-100">Calculate</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-info mt-4 text-center">
+        <b>Your BMI: {{ result }}</b><br>
+        Status: <b>{{ status }}</b>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-3">🔥 Daily Calories Tracker</h2>
+
+    <div class="card p-4 shadow mx-auto" style="max-width:450px;">
+        <form method="POST">
+            <label>Enter Calories</label>
+            <input type="number" name="calories" class="form-control mb-3" required>
+            <button class="btn btn-success w-100">Add</button>
+        </form>
+
+        <hr>
+
+        <h5>Total Today: <b>{{ total }} kcal</b></h5>
+
+        {% for l in logs %}
+        <div class="border rounded p-2 mb-2">
+            {{ l.calories }} kcal
+        </div>
+        {% endfor %}
+    </div>
+
+    <hr class="my-4">
+
+    <h3 class="text-center">📊 Calories (Last 7 Days)</h3>
+
+    <canvas id="calorieChart" height="130"></canvas>
+
+</div>
+
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('calorieChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for row in chart_data %}
+                "{{ row.date }}",
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'Calories',
+                data: [
+                    {% for row in chart_data %}
+                    {{ row.calories }},
+                    {% endfor %}
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

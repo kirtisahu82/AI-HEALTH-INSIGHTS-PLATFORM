@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-3">💧 Water Intake Tracker</h2>
+
+    <div class="card p-4 shadow mx-auto" style="max-width:450px;">
+
+        <h5>Today's Progress</h5>
+
+        <div class="progress mb-3" style="height: 25px;">
+            <div class="progress-bar bg-info fw-bold" 
+                 style="width: {{ percent }}%;">
+                {{ percent|round(1) }}%
+            </div>
+        </div>
+
+        <p><b>Consumed:</b> {{ intake }} ml</p>
+        <p><b>Daily Goal:</b> {{ goal }} ml</p>
+
+        <form method="POST" class="mt-3">
+            <label class="form-label">Add Water (ml)</label>
+            <select class="form-control mb-3" name="amount">
+                <option value="200">200 ml</option>
+                <option value="300">300 ml</option>
+                <option value="400">400 ml</option>
+                <option value="500">500 ml</option>
+            </select>
+
+            <button class="btn btn-primary w-100">Add</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

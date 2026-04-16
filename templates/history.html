@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-3">📜 History</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form class="row g-2" method="get" action="{{ url_for('history') }}">
+                <div class="col">
+                    <input type="date" name="start" class="form-control" value="{{ start_date }}">
+                </div>
+                <div class="col">
+                    <input type="date" name="end" class="form-control" value="{{ end_date }}">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Filter</button>
+                </div>
+                <div class="col-auto">
+                    <a href="{{ url_for('history_export') }}?start={{ start_date }}&end={{ end_date }}" class="btn btn-outline-secondary">Export CSV</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Summary per day -->
+    {% for d in ordered_days %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ d }}</h5>
+            <p class="mb-1"><b>Meals:</b> {{ summary[d].meals }} &nbsp; <b>Calories:</b> {{ summary[d].calories }} kcal &nbsp; <b>Water:</b> {{ summary[d].water }} ml &nbsp; <b>Steps:</b> {{ summary[d].steps }}</p>
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <h6>Meals</h6>
+                    {% for m in meals %}
+                        {% if m.date == d %}
+                        <div class="border rounded p-2 mb-2">
+                            <b>{{ m.meal_type }}</b> — {{ m.calories }} kcal<br>
+                            <small>{{ m.description }}</small>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6">
+                    <h6>Other</h6>
+                    {% for w in waters %}
+                        {% if w.date == d %}
+                        <div class="border rounded p-2 mb-2">
+                            <b>Water:</b> {{ w.intake }} ml
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for c in cals %}
+                        {% if c.date == d %}
+                        <div class="border rounded p-2 mb-2">
+                            <b>Calories (manual):</b> {{ c.calories }} kcal
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for s in steps %}
+                        {% if s.date == d %}
+                        <div class="border rounded p-2 mb-2">
+                            <b>Steps:</b> {{ s.steps }} steps
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if not ordered_days %}
+        <p class="text-muted">No history for selected dates.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

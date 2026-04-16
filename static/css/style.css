@@ -1,0 +1,96 @@
+/* ------- GLOBAL -------- */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f0fff4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Smooth buttons */
+button, .btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Page Headings */
+h1, h2, h3, h4 {
+    color: #2d6a4f;
+    font-weight: bold;
+}
+
+/* ------- INPUTS -------- */
+input, select {
+    border: 2px solid #c4e7d1;
+    padding: 8px;
+    border-radius: 8px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #2d6a4f;
+    outline: none;
+}
+
+
+/* ------- CARDS -------- */
+.card {
+    background: white;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ------- SIDEBAR -------- */
+.sidebar {
+    background: #2d6a4f;
+    color: white;
+}
+
+.sidebar h3 {
+    font-weight: bold;
+}
+
+.sidebar a {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+/* Sidebar Icons */
+.sidebar a:hover {
+    background: #40916c;
+    cursor: pointer;
+}
+
+/* Logout button */
+.logout-btn {
+    background: #d9534f;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #b52b27;
+}
+
+/* ------- DASHBOARD CONTENT -------- */
+.dashboard-title {
+    font-size: 28px;
+}
+
+/* Images inside cards */
+.card img {
+    width: 60px;
+    height: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        text-align: center;
+    }
+}
