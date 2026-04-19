@@ -52,6 +52,8 @@ AI Health Insights Platform is a web-based application built using Python and Fl
 
 \- SQLite
 
+\- AI chatbot (API / Rule-based)
+
 
 
 \---
@@ -106,7 +108,7 @@ AI Health Insights Platform is a web-based application built using Python and Fl
 
 
 
-git clone https://github.com/your-username/AI-Health-Insights-Platform.git
+git clone https://github.com/kirtisahu82/AI-Health-Insights-Platform.git
 
 
 
@@ -145,6 +147,61 @@ http://127.0.0.1:5000/
 \---
 
 
+<<<<<<< HEAD
+=======
+📸 Screenshots
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.jpeg)
+
+### 🔐 Login Page
+![Login](screenshots/login.jpeg)
+
+### 📝 Signup Page
+![Signup](screenshots/signup.jpeg)
+
+### 🚪 Logout Page
+![Logout](screenshots/logout.jpeg)
+
+### 📊 Dashboard
+![Dashboard](screenshots/dashboard.jpeg)
+
+### 🧮 BMI Calculator
+![BMI](screenshots/bmi calculator.jpeg)
+
+### 🔥 Calories Tracker
+![Calories](screenshots/calories tracker.jpeg)
+
+### 💧 Water Intake Tracker
+![Water](screenshots/water intake tracker.jpeg)
+
+### 👣 Steps Tracker
+![Steps](screenshots/steps tracker.jpeg)
+
+### 🍽️ Add Meal
+![Meal](screenshots/add meal.jpeg)
+
+### 📜 History
+![History](screenshots/history.jpeg)
+
+### 🤖 AI Chatbot
+![Chatbot](screenshots/ai chatbot.jpeg)
+
+
+\---
+
+
+## 💡 Real World Use Case
+
+This platform helps users monitor their daily health metrics like BMI, calories, and water intake, and provides intelligent suggestions for a healthier lifestyle.
+
+
+
+\---
+
+>>>>>>> bc358c5 (added all screenshots)
 
 ❗ Important Notes
 
