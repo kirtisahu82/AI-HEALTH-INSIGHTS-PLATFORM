@@ -108,7 +108,7 @@ AI Health Insights Platform is a web-based application built using Python and Fl
 
 
 
-git clone https://github.com/kirtisahu82/AI-Health-Insights-Platform.git
+git clone https://github.com/kirtiisahu15/AI-Health-Insights-Platform.git
 
 
 
