@@ -147,7 +147,7 @@ http://127.0.0.1:5000/
 \---
 
 
-<<<<<<< HEAD
+
 =======
 📸 Screenshots
 
@@ -200,8 +200,6 @@ This platform helps users monitor their daily health metrics like BMI, calories,
 
 
 \---
-
->>>>>>> bc358c5 (added all screenshots)
 
 ❗ Important Notes
 
